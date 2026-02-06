@@ -2,6 +2,7 @@ export * from './Alert.story';
 export * from './Badge.story';
 export * from './Button.story';
 export * from './Card.story';
+export * from './Carousel.story';
 export * from './Input.story';
 export * from './Loader.story';
 export * from './PixelTitle.story';

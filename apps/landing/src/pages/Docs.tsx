@@ -4,6 +4,7 @@ import {
   badgeStory,
   buttonStory,
   cardStory,
+  carouselStory,
   inputStory,
   loaderStory,
   pixelTitleStory,
@@ -22,14 +23,15 @@ export function Docs() {
       </p>
       <Playground
         stories={[
+          alertStory,
+          badgeStory,
           buttonStory,
           cardStory,
+          carouselStory,
           inputStory,
-          badgeStory,
-          alertStory,
+          loaderStory,
           pixelTitleStory,
           progressStory,
-          loaderStory,
           selectStory,
           skeletonStory,
         ]}
