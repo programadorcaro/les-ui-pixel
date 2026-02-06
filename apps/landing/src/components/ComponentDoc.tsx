@@ -14,13 +14,17 @@ export interface StoryConfig<T extends object = object> {
     props: T;
   }>;
   isVoidElement?: boolean;
+  /** When children are React elements, this placeholder is shown in the code preview instead of serializing them. */
+  childrenCodePlaceholder?: string;
 }
 
 export interface ComponentDocProps<T extends object = object> {
   story: StoryConfig<T>;
 }
 
-export function ComponentDoc<T extends object = object>({ story }: ComponentDocProps<T>) {
+export function ComponentDoc<T extends object = object>({
+  story,
+}: ComponentDocProps<T>) {
   const [currentProps, setCurrentProps] = useState<T>(story.defaultProps);
 
   useEffect(() => {
@@ -44,6 +48,10 @@ export function ComponentDoc<T extends object = object>({ story }: ComponentDocP
 
     const currentPropsAsRecord = currentProps as Record<string, unknown>;
     const childrenValue = currentPropsAsRecord.children;
+    const isComplexChildren =
+      childrenValue !== undefined &&
+      childrenValue !== null &&
+      typeof childrenValue !== 'string';
 
     const propsEntries = Object.entries(currentPropsAsRecord)
       .filter(([, value]) => {
@@ -54,6 +62,9 @@ export function ComponentDoc<T extends object = object>({ story }: ComponentDocP
       })
       .filter(([key]) => {
         if (key === 'children') {
+          if (isComplexChildren) {
+            return false;
+          }
           if (typeof childrenValue === 'string' && !shouldFilterChildren) {
             return false;
           }
@@ -79,8 +90,19 @@ export function ComponentDoc<T extends object = object>({ story }: ComponentDocP
       return `<${componentName}${propsString}>${childrenValue}</${componentName}>`;
     }
 
+    if (isComplexChildren) {
+      const placeholder =
+        story.childrenCodePlaceholder ?? '  {/* Your content */}';
+      return `<${componentName}${propsString}>\n${placeholder}\n</${componentName}>`;
+    }
+
     return `<${componentName}${propsString} />`;
-  }, [story.component, currentProps, story.isVoidElement]);
+  }, [
+    story.component,
+    currentProps,
+    story.isVoidElement,
+    story.childrenCodePlaceholder,
+  ]);
 
   const Component = story.component;
 
@@ -111,35 +133,47 @@ export function ComponentDoc<T extends object = object>({ story }: ComponentDocP
         </div>
       )}
 
-      <div className="component-doc-layout">
+      <div
+        className={`component-doc-layout ${Object.keys(story.propsConfig ?? {}).length === 0 ? 'component-doc-layout--no-props' : ''}`}
+      >
         <div className="component-doc-preview">
           <h4 className="component-doc-section-title">Preview</h4>
           <div className="component-doc-preview-area">
-          <Component
-            {...(Object.fromEntries(
-              Object.entries(currentProps as Record<string, unknown>).filter(([key]) => {
-                return !(story.isVoidElement ?? false) || key !== 'children';
-              })
-            ) as T)}
-          />
+            <Component
+              {...(Object.fromEntries(
+                Object.entries(currentProps as Record<string, unknown>).filter(
+                  ([key]) => {
+                    return (
+                      !(story.isVoidElement ?? false) || key !== 'children'
+                    );
+                  }
+                )
+              ) as T)}
+            />
           </div>
         </div>
 
-        <div className="component-doc-controls">
-          <PropsControl
-            props={Object.fromEntries(
-              Object.entries(currentProps as Record<string, unknown>).filter(([key]) => {
-                return !(story.isVoidElement ?? false) || key !== 'children';
-              })
-            )}
-            config={Object.fromEntries(
-              Object.entries(story.propsConfig ?? {}).filter(([key]) => {
-                return !(story.isVoidElement ?? false) || key !== 'children';
-              })
-            )}
-            onChange={handlePropsChange}
-          />
-        </div>
+        {Object.keys(story.propsConfig ?? {}).length > 0 && (
+          <div className="component-doc-controls">
+            <PropsControl
+              props={Object.fromEntries(
+                Object.entries(currentProps as Record<string, unknown>).filter(
+                  ([key]) => {
+                    return (
+                      !(story.isVoidElement ?? false) || key !== 'children'
+                    );
+                  }
+                )
+              )}
+              config={Object.fromEntries(
+                Object.entries(story.propsConfig ?? {}).filter(([key]) => {
+                  return !(story.isVoidElement ?? false) || key !== 'children';
+                })
+              )}
+              onChange={handlePropsChange}
+            />
+          </div>
+        )}
       </div>
 
       <div className="component-doc-code">
