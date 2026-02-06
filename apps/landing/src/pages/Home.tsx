@@ -397,7 +397,7 @@ function CollaboratorsSection() {
   return (
     <section className="section" id="collaborators">
       <h2 className="section-title">
-        <Icon name="Play" size={16} className="pixel-icon" /> Colaboradores
+        <Icon name="Play" size={16} className="pixel-icon" /> Collaborators
       </h2>
       <div className="collaborators-grid">
         {COLLABORATORS.map((person) => (
@@ -432,15 +432,15 @@ function CollaboratorsSection() {
 
 function HowToContributeSection() {
   const steps = [
-    'Clone o repositório',
-    'Instale dependências (pnpm install)',
-    'Crie uma branch para sua mudança',
-    'Abra um Pull Request',
+    'Clone repository',
+    'Install dependencies (pnpm install)',
+    'Create a branch for your change',
+    'Open a Pull Request',
   ];
   return (
     <section className="section" id="contribuir">
       <h2 className="section-title">
-        <Icon name="Play" size={16} className="pixel-icon" /> Como contribuir
+        <Icon name="Play" size={16} className="pixel-icon" /> How to contribute
       </h2>
       <ol className="contribute-steps">
         {steps.map((step, i) => (
@@ -455,7 +455,7 @@ function HowToContributeSection() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        Ver guia completo
+        View full guide
       </a>
     </section>
   );

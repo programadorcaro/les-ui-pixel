@@ -6,7 +6,7 @@ export const buttonStory: StoryConfig = {
   title: 'Button',
   component: Button,
   description:
-    'Botões pixel art com múltiplas variantes, tamanhos e animações.',
+    'Pixel art buttons with multiple variants, sizes and animations.',
   isVoidElement: false,
   defaultProps: {
     variant: 'primary' as const,
@@ -28,7 +28,7 @@ export const buttonStory: StoryConfig = {
       ],
       default: 'primary',
       label: 'Variant',
-      description: 'Estilo visual do botão',
+      description: 'Button visual style',
     },
     size: {
       type: 'select',
@@ -39,7 +39,7 @@ export const buttonStory: StoryConfig = {
       ],
       default: 'md',
       label: 'Size',
-      description: 'Tamanho do botão',
+      description: 'Button size',
     },
     animation: {
       type: 'select',
@@ -51,13 +51,13 @@ export const buttonStory: StoryConfig = {
       ],
       default: 'none',
       label: 'Animation',
-      description: 'Animação do botão',
+      description: 'Button animation',
     },
     style8bit: {
       type: 'boolean',
       default: false,
       label: '8-bit Style',
-      description: 'Usar estilo 8-bit clássico',
+      description: 'Use classic 8-bit style',
     },
   },
   presets: [

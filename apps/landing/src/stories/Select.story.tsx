@@ -6,7 +6,7 @@ export const selectStory: StoryConfig = {
   title: 'Select',
   component: SelectExample,
   description:
-    'Dropdown com estilo pixel art para seleção de opções.',
+    'Dropdown with pixel art style for option selection.',
   isVoidElement: true,
   defaultProps: {
     placeholder: 'Select an option...',
@@ -17,13 +17,13 @@ export const selectStory: StoryConfig = {
       type: 'text',
       default: 'Select an option...',
       label: 'Placeholder',
-      description: 'Texto exibido quando nenhuma opção está selecionada',
+      description: 'Text displayed when no option is selected',
     },
     disabled: {
       type: 'boolean',
       default: false,
       label: 'Disabled',
-      description: 'Desabilitar o select',
+      description: 'Disable select',
     },
   },
   presets: [

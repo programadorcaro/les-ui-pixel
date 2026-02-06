@@ -6,7 +6,7 @@ export const progressStory: StoryConfig<ProgressBarProps> = {
   title: 'ProgressBar',
   component: ProgressBar,
   description:
-    'Barra de progresso pixel art para exibir o progresso de tarefas ou carregamento.',
+    'Pixel art progress bar to display task progress or loading.',
   isVoidElement: true,
   defaultProps: {
     value: 65,
@@ -18,13 +18,13 @@ export const progressStory: StoryConfig<ProgressBarProps> = {
       type: 'number',
       default: 65,
       label: 'Value',
-      description: 'Valor atual do progresso',
+      description: 'Current progress value',
     },
     max: {
       type: 'number',
       default: 100,
       label: 'Max',
-      description: 'Valor máximo do progresso',
+      description: 'Maximum progress value',
     },
     variant: {
       type: 'select',
@@ -35,7 +35,7 @@ export const progressStory: StoryConfig<ProgressBarProps> = {
       ],
       default: 'default',
       label: 'Variant',
-      description: 'Variante de cor da barra',
+      description: 'Bar color variant',
     },
   },
   presets: [

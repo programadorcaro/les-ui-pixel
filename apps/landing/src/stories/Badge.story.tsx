@@ -6,7 +6,7 @@ export const badgeStory: StoryConfig = {
   title: 'Badge',
   component: Badge,
   description:
-    'Badges de status com estilo pixel art para indicar estados ou categorias.',
+    'Status badges with pixel art style to indicate states or categories.',
   isVoidElement: false,
   defaultProps: {
     variant: 'primary' as const,
@@ -23,7 +23,7 @@ export const badgeStory: StoryConfig = {
       ],
       default: 'primary',
       label: 'Variant',
-      description: 'Variante de cor do badge',
+      description: 'Badge color variant',
     },
   },
   presets: [

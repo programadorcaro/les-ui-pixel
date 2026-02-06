@@ -15,10 +15,10 @@ import {
 export function Docs() {
   return (
     <section className="section" id="docs">
-      <h2 className="section-title">Documentação de Componentes</h2>
+      <h2 className="section-title">Component Documentation</h2>
       <p className="pixel-text" style={{ marginBottom: '24px' }}>
-        Explore e teste os componentes da biblioteca em tempo real. Ajuste as
-        props e veja o resultado instantaneamente.
+        Explore and test library components in real-time. Adjust props and see
+        result instantly.
       </p>
       <Playground
         stories={[

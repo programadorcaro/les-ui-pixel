@@ -6,7 +6,7 @@ export const alertStory: StoryConfig = {
   title: 'Alert',
   component: Alert,
   description:
-    'Componentes de alerta com ícones para exibir mensagens importantes ou de status.',
+    'Alert components with icons to display important or status messages.',
   isVoidElement: false,
   defaultProps: {
     variant: 'info' as const,
@@ -23,7 +23,7 @@ export const alertStory: StoryConfig = {
       ],
       default: 'info',
       label: 'Variant',
-      description: 'Variante de cor do alerta',
+      description: 'Alert color variant',
     },
   },
   presets: [

@@ -6,7 +6,7 @@ export const pixelTitleStory: StoryConfig<PixelTitleProps> = {
   title: 'PixelTitle',
   component: PixelTitle,
   description:
-    'Título pixel art com efeitos de glitch e flutuação para headings impactantes.',
+    'Pixel art title with glitch and floating effects for impactful headings.',
   isVoidElement: false,
   defaultProps: {
     text: 'Game Over',
@@ -18,19 +18,19 @@ export const pixelTitleStory: StoryConfig<PixelTitleProps> = {
       type: 'text',
       default: 'Game Over',
       label: 'Text',
-      description: 'Texto do título',
+      description: 'Title text',
     },
     glitch: {
       type: 'boolean',
       default: true,
       label: 'Glitch',
-      description: 'Aplicar efeito de glitch',
+      description: 'Apply glitch effect',
     },
     float: {
       type: 'boolean',
       default: true,
       label: 'Float',
-      description: 'Aplicar efeito de flutuação',
+      description: 'Apply floating effect',
     },
   },
   presets: [

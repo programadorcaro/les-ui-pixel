@@ -6,7 +6,7 @@ export const inputStory: StoryConfig = {
   title: 'Input',
   component: Input,
   description:
-    'Campo de input de texto com estilo pixel art e estados de validação.',
+    'Text input field with pixel art style and validation states.',
   isVoidElement: true,
   defaultProps: {
     type: 'text' as const,
@@ -25,13 +25,13 @@ export const inputStory: StoryConfig = {
       ],
       default: 'text',
       label: 'Type',
-      description: 'Tipo do input',
+      description: 'Input type',
     },
     placeholder: {
       type: 'text',
       default: 'Enter text...',
       label: 'Placeholder',
-      description: 'Texto de exemplo exibido quando vazio',
+      description: 'Example text displayed when empty',
     },
     state: {
       type: 'select',
@@ -42,13 +42,13 @@ export const inputStory: StoryConfig = {
       ],
       default: 'default',
       label: 'State',
-      description: 'Estado de validação do input',
+      description: 'Input validation state',
     },
     disabled: {
       type: 'boolean',
       default: false,
       label: 'Disabled',
-      description: 'Desabilitar o input',
+      description: 'Disable the input',
     },
   },
   presets: [

@@ -6,7 +6,7 @@ export const loaderStory: StoryConfig = {
   title: 'Loader',
   component: Loader,
   description:
-    'Componentes de loading com animações pixel art para indicar carregamento.',
+    'Loading components with pixel art animations to indicate loading state.',
   isVoidElement: true,
   defaultProps: {
     type: 'dots' as const,
@@ -20,7 +20,7 @@ export const loaderStory: StoryConfig = {
       ],
       default: 'dots',
       label: 'Type',
-      description: 'Tipo de animação do loader',
+      description: 'Loader animation type',
     },
   },
   presets: [

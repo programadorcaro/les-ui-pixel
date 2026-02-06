@@ -6,7 +6,7 @@ export const cardStory: StoryConfig = {
   title: 'Card',
   component: CardExample,
   description:
-    'Contêiner flexível com estilo pixel art para exibir conteúdo relacionado de forma estruturada.',
+    'Flexible container with pixel art style to display related content in a structured way.',
   isVoidElement: false,
   defaultProps: {
     variant: 'default' as const,
@@ -22,7 +22,7 @@ export const cardStory: StoryConfig = {
       ],
       default: 'default',
       label: 'Variant',
-      description: 'Variante de cor do card',
+      description: 'Card color variant',
     },
   },
   presets: [

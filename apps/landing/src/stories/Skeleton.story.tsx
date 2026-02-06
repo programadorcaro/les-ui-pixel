@@ -6,7 +6,7 @@ export const skeletonStory: StoryConfig = {
   title: 'Skeleton',
   component: Skeleton,
   description:
-    'Placeholder de carregamento com estilo pixel art para exibir enquanto o conteúdo está sendo carregado.',
+    'Loading placeholder with pixel art style to display while content is loading.',
   isVoidElement: true,
   defaultProps: {
     width: 200,
@@ -17,13 +17,13 @@ export const skeletonStory: StoryConfig = {
       type: 'number',
       default: 200,
       label: 'Width',
-      description: 'Largura em pixels',
+      description: 'Width in pixels',
     },
     height: {
       type: 'number',
       default: 20,
       label: 'Height',
-      description: 'Altura em pixels',
+      description: 'Height in pixels',
     },
   },
   presets: [
