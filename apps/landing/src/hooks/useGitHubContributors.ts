@@ -3,40 +3,6 @@ import { useState, useEffect } from 'react';
 const GITHUB_OWNER = 'programadorcaro';
 const GITHUB_REPO = 'les-ui-pixel';
 
-/** Ativar para usar 4 contribuidores mockados (apenas testes). */
-const USE_MOCK_CONTRIBUTORS = true;
-
-const MOCK_CONTRIBUTORS: GitHubContributor[] = [
-  {
-    name: 'Lucas Maia e Silva',
-    login: 'programadorcaro',
-    avatar: 'https://avatars.githubusercontent.com/u/8356935?v=4',
-    role: 'Maintainer',
-    contributions: 42,
-  },
-  {
-    name: 'Víctor Souza',
-    login: 'victorsouza',
-    avatar: 'https://avatars.githubusercontent.com/u/102697200?v=4',
-    role: 'Contributor',
-    contributions: 12,
-  },
-  {
-    name: 'Dev Tester',
-    login: 'dev-tester',
-    avatar: 'https://avatars.githubusercontent.com/u/9919?v=4',
-    role: 'Contributor',
-    contributions: 3,
-  },
-  {
-    name: 'Ana Pixel',
-    login: 'ana-pixel',
-    avatar: 'https://avatars.githubusercontent.com/u/583231?v=4',
-    role: 'Contributor',
-    contributions: 7,
-  },
-];
-
 export interface GitHubContributor {
   name: string;
   login: string;
@@ -52,13 +18,6 @@ export function useGitHubContributors() {
 
   useEffect(() => {
     async function fetchContributors() {
-      if (USE_MOCK_CONTRIBUTORS) {
-        await new Promise((r) => setTimeout(r, 600));
-        setContributors(MOCK_CONTRIBUTORS);
-        setLoading(false);
-        return;
-      }
-
       try {
         const response = await fetch(
           `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contributors?per_page=10`
