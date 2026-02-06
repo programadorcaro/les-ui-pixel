@@ -22,10 +22,9 @@ import {
 import { Icon } from '../components/Icon';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useGitHubStats, formatStarCount } from '../hooks/useGitHubStats';
 
 const GITHUB_REPO_URL = 'https://github.com/programadorcaro/les-ui-pixel';
-const MOCK_STARS = '1.2k';
-const MOCK_FORKS = 42;
 
 const COLLABORATORS = [
   {
@@ -41,6 +40,8 @@ const COLLABORATORS = [
 ];
 
 function Hero() {
+  const { stats, loading } = useGitHubStats();
+
   return (
     <section className="hero">
       <PixelTitle text="PIXEL UI" />
@@ -78,16 +79,7 @@ function Hero() {
           rel="noopener noreferrer"
         >
           <Icon name="Star" size={20} className="pixel-icon" />
-          <span>{MOCK_STARS}</span>
-        </a>
-        <a
-          href={GITHUB_REPO_URL}
-          className="hero-stat-link"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Icon name="Fork" size={20} className="pixel-icon" />
-          <span>{MOCK_FORKS}</span>
+          <span>{loading ? '...' : formatStarCount(stats.stars)}</span>
         </a>
       </div>
     </section>

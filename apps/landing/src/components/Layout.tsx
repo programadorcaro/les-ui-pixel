@@ -2,10 +2,9 @@ import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from './Icon';
 import { PixelTitle } from '@les-ui/pixel';
+import { useGitHubStats, formatStarCount } from '../hooks/useGitHubStats';
 
 const GITHUB_REPO_URL = 'https://github.com/programadorcaro/les-ui-pixel';
-const MOCK_STARS = '1.2k';
-const MOCK_FORKS = 42;
 
 const STAR_COUNT = 4000;
 const STAR_RADIUS = 1;
@@ -96,6 +95,8 @@ function Starfield() {
 }
 
 function Header() {
+  const { stats, loading } = useGitHubStats();
+
   return (
     <header className="header">
       <Link to="/">
@@ -125,16 +126,7 @@ function Header() {
           rel="noopener noreferrer"
         >
           <Icon name="Star" size={16} className="pixel-icon" />
-          <span>{MOCK_STARS}</span>
-        </a>
-        <a
-          href={GITHUB_REPO_URL}
-          className="nav-link"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Icon name="GitHub" size={16} className="pixel-icon" />
-          <span>{MOCK_FORKS}</span>
+          <span>{loading ? '...' : formatStarCount(stats.stars)}</span>
         </a>
       </nav>
     </header>
