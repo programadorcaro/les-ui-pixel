@@ -144,7 +144,9 @@ a:hover {
 
 /* Hero: background ocupa só esta seção (100vw x 100vh); conteúdo segue o container */
 .landing-hero {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
