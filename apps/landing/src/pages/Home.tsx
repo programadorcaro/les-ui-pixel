@@ -41,8 +41,7 @@ const LANDING_LABELS: { label: string; variant: 'pink' | 'cyan' | 'yellow' }[] =
 export function Home() {
   const { contributors, loading, error } = useGitHubContributors();
   const isDesktop = useMediaQuery('(min-width: 764px)');
-  const useCarousel =
-    contributors.length > (isDesktop ? 3 : 2);
+  const useCarousel = contributors.length > (isDesktop ? 3 : 2);
 
   return (
     <main className="landing">
@@ -163,18 +162,18 @@ export function Home() {
         </Link>
       </section>
 
-      <section className="landing-section" id="contribuintes">
-        <h2 className="landing-section-title">Contribuintes</h2>
+      <section className="landing-section" id="contributors">
+        <h2 className="landing-section-title">Contributors</h2>
         <p className="landing-section-desc">
-          Pessoas que mantêm e contribuem com o projeto.
+          People who maintain and contribute to the project.
         </p>
         <div className="landing-contributors">
           {loading && (
-            <p className="landing-contributors-loading">Carregando...</p>
+            <p className="landing-contributors-loading">Loading...</p>
           )}
           {error && (
             <p className="landing-contributors-error">
-              Não foi possível carregar os contribuintes.
+              Unable to load contributors.
             </p>
           )}
           {!loading &&
@@ -182,7 +181,7 @@ export function Home() {
             contributors.length > 0 &&
             (useCarousel ? (
               <Carousel
-                ariaLabel="Contribuintes"
+                ariaLabel="Contributors "
                 className="landing-contributors-carousel"
               >
                 {contributors.map((person) => (
