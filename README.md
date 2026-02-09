@@ -1,42 +1,42 @@
-# Pixel Art Component Library
+# L&S Pixel
 
-Biblioteca de componentes React com estética pixel art retro, inspirada em jogos clássicos 8-bit.
+React component library with retro pixel art aesthetics, inspired by classic 8-bit games.
 
-## Instalação
+## Installation
 
 ```bash
 npm install @les-ui/pixel
 ```
 
-ou
+or
 
 ```bash
 pnpm add @les-ui/pixel
 ```
 
-ou
+or
 
 ```bash
 yarn add @les-ui/pixel
 ```
 
-## Tecnologias
+## Technologies
 
-- **React 18** - Framework UI
-- **TypeScript 5** - Tipagem estática
-- **Vite 6** - Build tool e dev server
+- **React 18** - UI framework
+- **TypeScript 5** - Static typing
+- **Vite 6** - Build tool and dev server
 - **Turborepo 2** - Monorepo build system
-- **pnpm** - Gerenciador de pacotes
+- **pnpm** - Package manager
 
-## Primeiros Passos
+## Getting Started
 
-### Pré-requisitos
+### Prerequisites
 
 - Node.js >= 18.0.0
 - React >= 18.3.1
 - React-DOM >= 18.3.1
 
-### Uso Básico
+### Basic Usage
 
 ```tsx
 import {
@@ -66,98 +66,106 @@ function App() {
 export default App;
 ```
 
-## Desenvolvimento (Contribuindo)
+## Development
 
-Este repositório é um monorepo gerenciado por **Turborepo** e **pnpm**, contendo:
+This repository is a **Turborepo** monorepo using **pnpm** workspaces:
 
 ```
-components-lib/
+les-ui-pixel/
 ├── apps/
-│   └── landing/       # Landing page de demonstração
+│   └── landing/          # Landing page + docs (@repo/landing)
 └── packages/
-    └── ui/            # Biblioteca de componentes React (@les-ui/pixel)
+    └── ui/               # Component library (@les-ui/pixel)
 ```
 
-### Pré-requisitos para Desenvolvimento
+### Development Prerequisites
 
 - Node.js >= 18.0.0
 - pnpm >= 9.0.0
 
-### Instalação Local
+### Local Installation
 
 ```bash
-# Instalar dependências
+# Install dependencies
 pnpm install
 
-# Build inicial dos packages
+# Initial build of packages
 pnpm build
 ```
 
-### URLs de Desenvolvimento
+### Development URLs
 
 - **Landing Page**: http://127.0.0.1:5174
 
-## Componentes Disponíveis
+## Available Components
 
 ### PixelTitle
 
-- `PixelTitle` - Título pixel art com efeitos glitch e float
+- `PixelTitle` - Pixel art title with glitch and float effects
 - Props: `text`, `glitch` (boolean, default: true), `float` (boolean, default: true)
 
 ```tsx
 import { PixelTitle } from '@les-ui/pixel';
 
-// Com glitch e float (padrão)
+// With glitch and float (default)
 <PixelTitle text="PIXEL ART" />
 
-// Sem glitch
+// Without glitch
 <PixelTitle text="PIXEL ART" glitch={false} />
 
-// Sem float
+// Without float
 <PixelTitle text="PIXEL ART" float={false} />
 
-// Sem ambos
+// Without both
 <PixelTitle text="PIXEL ART" glitch={false} float={false} />
 ```
 
-### Botões
+### Buttons
 
-- `Button` - Botões pixel art com múltiplas variantes (primary, secondary, accent, danger, success, ghost)
-- Tamanhos: sm, md, lg
-- Animações: pulse, shake, glow
+- `Button` - Pixel art buttons with multiple variants (primary, secondary, accent, danger, success, ghost)
+- Sizes: sm, md, lg
+- Animations: pulse, shake, glow
 
 ### Cards
 
-- `Card` - Container principal
-- `CardHeader` / `CardTitle` - Cabeçalho
-- `CardBody` - Corpo do card
-- `CardFooter` - Rodapé
+- `Card` - Main container
+- `CardHeader` / `CardTitle` - Header
+- `CardBody` - Card body
+- `CardFooter` - Footer
 
-### Badges e Labels
+### Carousel
 
-- `Badge` - Badges de status (primary, success, danger, warning)
-- `LevelBadge` - Badges de nível (1-4)
-- `Label` - Labels coloridos (pink, cyan, yellow)
+- `Carousel` - Horizontal scroll/carousel for content (e.g. contributor cards)
+
+### Badges and Labels
+
+- `Badge` - Status badges (primary, success, danger, warning)
+- `LevelBadge` - Level badges (1-4)
+- `Label` - Colored labels (pink, cyan, yellow)
 
 ### Inputs
 
-- `Input` - Input de texto
-- `Textarea` - Área de texto
-- `Select` - Select dropdown
-- `Checkbox` - Checkbox customizado
+- `Input` - Text input
+- `Textarea` - Text area
+- `Select` - Dropdown select
+- `Checkbox` - Custom checkbox
 
 ### Progress
 
-- `ProgressBar` - Barra de progresso
-- `HealthBar` - Barra de vida/mana/xp
-- `Loader` - Indicadores de loading (pixel, dots, spinner)
+- `ProgressBar` - Progress bar
+- `HealthBar` - Health/mana/xp bar
+- `Loader` - Loading indicators (pixel, dots, spinner)
 
 ### Alerts
 
-- `Alert` - Alertas (info, success, warning, danger)
-- `Toast` - Notificações toast
+- `Alert` - Alerts (info, success, warning, danger)
+- `Toast` - Toast notifications
 
-## Usando os Componentes
+### Skeleton
+
+- `Skeleton` - Placeholder loading skeleton
+
+## Using the Components
 
 ```tsx
 import {
@@ -185,40 +193,40 @@ function App() {
 }
 ```
 
-## Scripts Disponíveis
+## Available Scripts
 
 ```bash
-# Desenvolvimento
-pnpm dev           # Roda todos apps em paralelo
+# Development
+pnpm dev           # Run all apps in parallel
 
 # Build
-pnpm build         # Builda todos packages e apps
+pnpm build         # Build all packages and apps
 
 # Linting
-pnpm lint          # Executa linter em todos packages
+pnpm lint          # Run linter across all packages
 
-# Formatação
-pnpm format        # Formata código com Prettier
+# Formatting
+pnpm format        # Format code with Prettier
 
-# Limpeza
-pnpm clean         # Remove node_modules e dist
+# Clean
+pnpm clean         # Remove node_modules and dist
 ```
 
-## Estrutura de Estilos
+## Style Structure
 
-A biblioteca usa variáveis CSS para manter consistência visual:
+The library uses CSS variables for visual consistency:
 
 ```css
-/* Cores principais */
+/* Main colors */
 --color-primary:
   #ff006e --color-accent: #00f5ff --color-success: #06ffa5
-    --color-danger: #ff006e /* Font pixel art */ --font-pixel: 'Press Start 2P',
-  monospace /* Espaçamentos */ --space-sm: 8px --space-md: 16px --space-lg: 24px;
+    --color-danger: #ff006e /* Pixel art font */ --font-pixel: 'Press Start 2P',
+  monospace /* Spacing */ --space-sm: 8px --space-md: 16px --space-lg: 24px;
 ```
 
 ### Pixel Corners
 
-Todos os componentes usam `clip-path` CSS para criar os cantos pixel art característicos:
+All components use CSS `clip-path` to create the characteristic pixel art corners:
 
 ```css
 .pixel-corner-8 {
@@ -239,84 +247,104 @@ Todos os componentes usam `clip-path` CSS para criar os cantos pixel art caracte
 }
 ```
 
-## Processo de Release
+## Release Process
 
-Este projeto usa **Changesets** para gerenciar versionamentos e publicações.
+This project uses **Changesets** for versioning and publishing. Only the **`@les-ui/pixel`** package is versioned; the landing app (`@repo/landing`) is ignored by changesets.
 
-### Criando um novo Changeset
+### Creating a New Changeset
 
-Após fazer mudanças no código, crie um changeset:
+After changing code in `packages/ui`, create a changeset:
 
 ```bash
 pnpm changeset
 ```
 
-Você será solicitado a:
+You will be prompted to:
 
-1. Selecionar quais pacotes foram alterados (no caso, apenas `@les-ui/pixel`)
-2. Escolher o tipo de versão:
-   - `patch`: Bug fixes, pequenas correções (1.0.0 → 1.0.1)
-   - `minor`: Novas features compatíveis (1.0.0 → 1.1.0)
-   - `major`: Mudanças quebram compatibilidade (1.0.0 → 2.0.0)
-3. Escrever uma breve descrição das mudanças
+1. Select the package(s) changed — only **`@les-ui/pixel`** is versioned; `@repo/landing` is ignored.
+2. Choose the version type:
+   - **patch**: Bug fixes, small corrections (1.0.0 → 1.0.1)
+   - **minor**: New backward-compatible features (1.0.0 → 1.1.0)
+   - **major**: Breaking changes (1.0.0 → 2.0.0)
+3. Write a short description of the changes in the generated markdown file.
 
-### Publicando uma Nova Versão
+### Publishing a New Version
 
 ```bash
-# Atualiza as versões dos pacotes e gera o CHANGELOG.md
+# Update package versions and generate CHANGELOG.md
 pnpm version-packages
 
-# Build e publica no npm
+# Build and publish to npm
 pnpm release
 ```
 
-Este comando:
+This command:
 
-1. Lê todos os changesets do diretório `.changeset/`
-2. Atualiza a versão do pacote em `package.json`
-3. Gera/atualiza o arquivo `CHANGELOG.md`
-4. Compila o código
-5. Publica no npm registry
+1. Reads all changesets from the `.changeset/` directory
+2. Updates the package version in `package.json`
+3. Generates/updates the `CHANGELOG.md` file
+4. Compiles the code
+5. Publishes to the npm registry
 
-## Build e Deploy
+## Build and Deploy
 
-### Desenvolvimento
+### Development
 
 ```bash
-# Rodar a landing page
+# Run the landing page
 pnpm --filter @repo/landing dev
 
-# Buildar o package UI
+# Build the UI package
 pnpm --filter @les-ui/pixel build
 ```
 
-### Build de Produção
+### Production Build
 
 ```bash
-# Build de produção do package
+# Production build of the package
 pnpm --filter @les-ui/pixel build
 
-# Build de todos os packages e apps
+# Build all packages and apps
 pnpm build
 ```
 
 ### Preview
 
 ```bash
-# Preview do build da landing page
+# Preview the landing page build
 pnpm --filter @repo/landing preview
 ```
 
-## Contribuindo
+## Contributing
 
-1. Clone o repositório
-2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`)
-3. Faça suas alterações
-4. Rode os testes e lint (`pnpm lint`)
-5. Commit suas mudanças (`git commit -m 'feat: adiciona nova feature'`)
-6. Push para a branch (`git push origin feature/nova-feature`)
-7. Abra um Pull Request
+The default branch is **`develop`**. Direct commits to `main` and `develop` are **not allowed**. All changes must be made on a **new branch** and submitted via a Pull Request **into `develop`**.
 
-## Licença
+### How to contribute
 
-© 2026 Pixel Art Component Library
+1. **Clone the repository**  
+   `git clone https://github.com/programadorcaro/les-ui-pixel.git && cd les-ui-pixel`
+
+2. **Create a new branch from `develop`** (e.g. `feature/my-feature` or `fix/bug-description`). Do not commit or push to `main` or `develop`.  
+   `git checkout develop && git pull && git checkout -b feature/my-feature`
+
+3. **Install and build**  
+   `pnpm install && pnpm build`
+
+4. **Make your changes** in the appropriate app or package.
+
+5. **Run lint**  
+   `pnpm lint`
+
+6. **Commit on your branch** (prefer conventional commits, e.g. `feat: add new feature`)  
+   `git add . && git commit -m 'feat: add new feature'`
+
+7. **Push your branch**  
+   `git push origin feature/my-feature`
+
+8. **Open a Pull Request** from your branch **into `develop`**. Only feature/fix branches are accepted; do not open PRs from `main` or `develop`.
+
+Maintainers will review and merge into `develop`. Version bumps and publishing are done by maintainers via the [Release Process](#release-process) (`version-packages` and `release`).
+
+## License
+
+© 2026 L&S Pixel
