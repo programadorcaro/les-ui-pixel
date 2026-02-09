@@ -95,7 +95,7 @@ pnpm build
 
 ### Development URLs
 
-- **Landing Page**: http://127.0.0.1:5174
+- **Landing Page**: http://127.0.0.1:5173
 
 ## Available Components
 

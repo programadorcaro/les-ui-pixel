@@ -8,12 +8,13 @@
 
 body {
   font-family: var(--font-pixel);
-  background: linear-gradient(
+  /* background: linear-gradient(
     180deg,
     var(--color-bg) 0%,
     #1a0a2e 50%,
     var(--color-bg) 100%
-  );
+  ); */
+  background: #050c15;
   color: var(--color-text);
   line-height: 1.6;
   overflow-x: hidden;
@@ -141,9 +142,107 @@ a:hover {
   padding-bottom: 3rem;
 }
 
+/* Hero: background ocupa só esta seção (100vw x 100vh); conteúdo segue o container */
+.landing-hero {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-bottom: 3rem;
+  overflow: hidden;
+  min-height: 48dvh;
+}
+
+.landing-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('./assets/bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat-x;
+  z-index: 0;
+  -webkit-mask-image: linear-gradient(
+    to top,
+    black 0%,
+    black 68%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(to top, black 0%, black 68%, transparent 100%);
+}
+
+.landing-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.landing-hero-card {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  justify-content: center;
+  clip-path: polygon(
+    0 8px,
+    8px 8px,
+    8px 0,
+    calc(100% - 8px) 0,
+    calc(100% - 8px) 8px,
+    100% 8px,
+    100% calc(100% - 8px),
+    calc(100% - 8px) calc(100% - 8px),
+    calc(100% - 8px) 100%,
+    8px 100%,
+    8px calc(100% - 8px),
+    0 calc(100% - 8px)
+  );
+}
+
+.landing-hero-subtitle {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.landing-hero-text {
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 320px;
+}
+
+.landing-hero-cta {
+  margin-top: 0.5rem;
+}
+
+.landing-hero-video {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .landing-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .landing-hero-video {
+    order: -1;
+  }
+}
+
 .landing-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
   margin-bottom: 3rem;
 }
@@ -155,10 +254,6 @@ a:hover {
 @media (max-width: 900px) {
   .landing-grid {
     grid-template-columns: 1fr;
-  }
-
-  .landing-card--hero {
-    grid-row: auto;
   }
 
   .landing-card--wide {
@@ -188,32 +283,6 @@ a:hover {
     8px calc(100% - 8px),
     0 calc(100% - 8px)
   );
-}
-
-.landing-card--hero {
-  grid-row: span 2;
-  background-color: var(--color-bg-secondary);
-  border-color: rgba(0, 245, 255, 0.5);
-  box-shadow: 0 0 24px rgba(0, 245, 255, 0.12);
-  justify-content: center;
-}
-
-.landing-hero-subtitle {
-  font-size: 1rem;
-  color: var(--color-text-secondary);
-  margin: 0;
-}
-
-.landing-hero-text {
-  font-size: 0.9375rem;
-  color: var(--color-text-secondary);
-  line-height: 1.6;
-  margin: 0;
-  max-width: 280px;
-}
-
-.landing-cta {
-  margin-top: 0.5rem;
 }
 
 .landing-card--pastel-yellow {
@@ -483,6 +552,147 @@ a:hover {
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   grid-column: 1 / -1;
+}
+
+.landing-video-container {
+  padding: 0;
+  margin: 0 auto;
+  overflow: hidden;
+  width: 100%;
+  max-width: 624px;
+}
+
+.landing-video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.landing-hero-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.landing-star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 0;
+  box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.8);
+  animation: landing-star-twinkle-mid 2.5s ease-in-out infinite;
+}
+
+.landing-star--dim {
+  animation: landing-star-twinkle-dim 2.5s ease-in-out infinite;
+  box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.5);
+}
+
+.landing-star--mid {
+  animation: landing-star-twinkle-mid 2.5s ease-in-out infinite;
+}
+
+.landing-star--bright {
+  animation: landing-star-twinkle-bright 2.5s ease-in-out infinite;
+  box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.9);
+}
+
+@keyframes landing-star-twinkle-dim {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes landing-star-twinkle-mid {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes landing-star-twinkle-bright {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.landing-video-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 50%;
+  height: 50%;
+  object-fit: cover;
+  z-index: 0;
+  margin-top: 11%;
+  margin-left: 26%;
+}
+
+.landing-video-backdrop-overlay {
+  position: absolute;
+  top: 14%;
+  left: 26%;
+  width: 50%;
+  height: 15%;
+  background-image: linear-gradient(
+    to bottom,
+    black 0%,
+    rgba(0, 0, 0, 0.5) 80%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.landing-video-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  pointer-events: none;
+  z-index: 2;
+  mask-image:
+    linear-gradient(to bottom, black 0%, black 68%, transparent 100%),
+    linear-gradient(
+      to right,
+      transparent 0%,
+      black 12%,
+      black 88%,
+      transparent 100%
+    );
+  -webkit-mask-image:
+    linear-gradient(to bottom, black 0%, black 68%, transparent 100%),
+    linear-gradient(
+      to right,
+      transparent 0%,
+      black 12%,
+      black 88%,
+      transparent 100%
+    );
+  mask-size: 100% 100%;
+  -webkit-mask-size: 100% 100%;
+  mask-composite: intersect;
+  -webkit-mask-composite: source-in;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
 }
 
 /* Docs page: section (kept for Docs.tsx) */
