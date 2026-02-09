@@ -15,8 +15,8 @@ import {
 
 export function Docs() {
   return (
-    <section className="section" id="docs">
-      <h2 className="section-title">Component Documentation</h2>
+    <main className="section" id="docs" aria-label="Documentation">
+      <h1 className="section-title">Component Documentation</h1>
       <p className="pixel-text" style={{ marginBottom: '24px' }}>
         Explore and test library components in real-time. Adjust props and see
         result instantly.
@@ -36,6 +36,6 @@ export function Docs() {
           skeletonStory,
         ]}
       />
-    </section>
+    </main>
   );
 }

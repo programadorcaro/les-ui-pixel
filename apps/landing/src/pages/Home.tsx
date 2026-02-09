@@ -38,6 +38,41 @@ const LANDING_LABELS: { label: string; variant: 'pink' | 'cyan' | 'yellow' }[] =
     { label: 'LEGENDARY', variant: 'yellow' },
   ];
 
+const HERO_STARS: {
+  top: string;
+  left: string;
+  delay: number;
+  opacity: 'dim' | 'mid' | 'bright';
+  size: number;
+}[] = [
+  { top: '5%', left: '3%', delay: 0, opacity: 'dim', size: 2 },
+  { top: '12%', left: '8%', delay: 0.4, opacity: 'bright', size: 4 },
+  { top: '7%', left: '14%', delay: 1.2, opacity: 'mid', size: 3 },
+  { top: '16%', left: '22%', delay: 0.8, opacity: 'dim', size: 2 },
+  { top: '4%', left: '28%', delay: 0.2, opacity: 'bright', size: 5 },
+  { top: '11%', left: '35%', delay: 1.6, opacity: 'mid', size: 3 },
+  { top: '8%', left: '42%', delay: 0.6, opacity: 'dim', size: 2 },
+  { top: '14%', left: '48%', delay: 1.4, opacity: 'bright', size: 4 },
+  { top: '6%', left: '54%', delay: 0.3, opacity: 'mid', size: 3 },
+  { top: '18%', left: '60%', delay: 0.9, opacity: 'dim', size: 2 },
+  { top: '9%', left: '66%', delay: 1.1, opacity: 'bright', size: 4 },
+  { top: '13%', left: '72%', delay: 0.5, opacity: 'mid', size: 3 },
+  { top: '5%', left: '78%', delay: 1.3, opacity: 'dim', size: 2 },
+  { top: '15%', left: '84%', delay: 0.7, opacity: 'bright', size: 5 },
+  { top: '10%', left: '91%', delay: 0.1, opacity: 'mid', size: 3 },
+  { top: '7%', left: '18%', delay: 1.5, opacity: 'dim', size: 2 },
+  { top: '14%', left: '26%', delay: 0.4, opacity: 'bright', size: 3 },
+  { top: '6%', left: '38%', delay: 0.8, opacity: 'mid', size: 4 },
+  { top: '12%', left: '52%', delay: 1.2, opacity: 'dim', size: 2 },
+  { top: '8%', left: '64%', delay: 0.2, opacity: 'bright', size: 3 },
+  { top: '16%', left: '76%', delay: 0.6, opacity: 'mid', size: 2 },
+  { top: '9%', left: '88%', delay: 1, opacity: 'dim', size: 4 },
+  { top: '11%', left: '12%', delay: 0.5, opacity: 'mid', size: 3 },
+  { top: '5%', left: '46%', delay: 1.4, opacity: 'bright', size: 2 },
+  { top: '15%', left: '70%', delay: 0.3, opacity: 'dim', size: 3 },
+  { top: '7%', left: '96%', delay: 0.9, opacity: 'mid', size: 2 },
+];
+
 export function Home() {
   const { contributors, loading, error } = useGitHubContributors();
   const isDesktop = useMediaQuery('(min-width: 764px)');
@@ -45,21 +80,62 @@ export function Home() {
 
   return (
     <main className="landing">
-      <div className="landing-grid">
-        <div className="landing-card landing-card--hero">
-          <PixelTitle text="L&S Pixel" />
-          <p className="landing-hero-subtitle">Component Library</p>
-          <p className="landing-hero-text">
-            React components with pixel art aesthetics for dashboards, games and
-            retro interfaces.
-          </p>
-          <Link to="/docs" className="landing-cta">
-            <Button variant="primary" size="lg">
-              View Docs
-            </Button>
-          </Link>
+      <section className="landing-hero" aria-label="Hero">
+        <div className="landing-hero-inner">
+          <div className="landing-hero-card">
+            <PixelTitle text="L&S Pixel" className="landing-hero-title" />
+            <p className="landing-hero-subtitle">Component Library</p>
+            <p className="landing-hero-text">
+              React components with pixel art aesthetics for dashboards, games
+              and retro interfaces.
+            </p>
+            <Link to="/docs" className="landing-hero-cta">
+              <Button variant="primary" size="lg" style8bit>
+                View Docs
+              </Button>
+            </Link>
+          </div>
+          <div className="landing-hero-stars" aria-hidden>
+            {HERO_STARS.map((star, i) => (
+              <span
+                key={i}
+                className={`landing-star landing-star--${star.opacity}`}
+                style={{
+                  top: star.top,
+                  left: star.left,
+                  width: star.size,
+                  height: star.size,
+                  animationDelay: `${star.delay}s`,
+                }}
+              />
+            ))}
+          </div>
+          <div className="landing-hero-video">
+            <div className="landing-video-container">
+              <div className="landing-video-wrapper">
+                <video
+                  className="landing-video-backdrop"
+                  src="/game.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  aria-hidden
+                />
+                <div className="landing-video-backdrop-overlay" aria-hidden />
+                <img
+                  src="/gameOverlay.png"
+                  alt=""
+                  className="landing-video-overlay"
+                  aria-hidden
+                />
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
 
+      <div className="landing-grid">
         <div className="landing-card landing-card--pastel-green">
           <h2 className="landing-card-title">Welcome</h2>
           <p className="landing-card-text landing-card-text--welcome">
