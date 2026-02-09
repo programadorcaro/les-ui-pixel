@@ -3,6 +3,11 @@ import { useState, useEffect } from 'react';
 const GITHUB_OWNER = 'programadorcaro';
 const GITHUB_REPO = 'les-ui-pixel';
 
+const MAINTAINER_LOGINS = new Set([
+  'lucasmaiaesilva',
+  'programadorcaro',
+  'VictorSouza02',
+]);
 export interface GitHubContributor {
   name: string;
   login: string;
@@ -35,11 +40,17 @@ export function useGitHubContributors() {
         const list: GitHubContributor[] = data
           .filter((item: { type?: string; login: string }) => !isBot(item))
           .map(
-            (item: { login: string; avatar_url: string; contributions: number }, index: number) => ({
+            (item: {
+              login: string;
+              avatar_url: string;
+              contributions: number;
+            }) => ({
               name: item.login,
               login: item.login,
               avatar: item.avatar_url,
-              role: index === 0 ? 'Maintainer' : 'Contributor',
+              role: MAINTAINER_LOGINS.has(item.login)
+                ? 'Maintainer'
+                : 'Contributor',
               contributions: item.contributions,
             })
           );
