@@ -13,7 +13,7 @@ function Header() {
       <Link to="/" className="header-brand">
         <img src="/logo.png" alt="L&S Pixel" className="header-logo" />
       </Link>
-      <nav className="nav">
+      <nav className="nav" aria-label="Main">
         <Link to="/" className="nav-link">
           Home
         </Link>
