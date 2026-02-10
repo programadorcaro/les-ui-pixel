@@ -2,7 +2,7 @@
    INPUT FIELDS
    ======================================== */
 .input-pixel {
-  font-size: 0.6875rem;
+  font-family: var(--font-pixelify);
   padding: 10px 12px;
   background: var(--color-bg-secondary);
   border: var(--border-pixel) solid var(--color-text-dim);
