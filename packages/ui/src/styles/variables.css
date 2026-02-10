@@ -41,10 +41,10 @@
   /* Font */
   --font-pixel: 'Press Start 2P', monospace;
   --font-pixelify: 'Pixelify Sans', sans-serif;
-  --font-size-xs: 8px;
-  --font-size-sm: 10px;
-  --font-size-md: 12px;
-  --font-size-lg: 16px;
-  --font-size-xl: 24px;
-  --font-size-xxl: 32px;
+  --font-size-xs: 10px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 26px;
+  --font-size-xxl: 36px;
 }

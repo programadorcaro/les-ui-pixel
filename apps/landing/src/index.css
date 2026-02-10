@@ -43,7 +43,7 @@ a:hover {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1279px;
   margin: 0 auto;
   padding: 1rem 1.5rem;
 }
@@ -192,7 +192,6 @@ a:hover {
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
   justify-content: center;
   background: rgba(26, 31, 58, 0.85);
   backdrop-filter: blur(10px);
@@ -225,6 +224,7 @@ a:hover {
 }
 
 .landing-hero-description {
+  max-width: 32ch;
   font-family: var(--font-pixelify);
   font-size: 1rem;
   font-weight: 500;
@@ -291,6 +291,8 @@ a:hover {
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  max-width: 70%;
+  margin: 52px auto;
 }
 
 .landing-card--wide {
@@ -1219,6 +1221,681 @@ a:hover {
   color: #ffd700;
 }
 
+/* Documentation Page Animations */
+
+/* Particle background animation */
+@keyframes docsParticleFloat {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) translateX(20px);
+    opacity: 0;
+  }
+}
+
+@keyframes docsFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes docsSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes docsPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(99, 102, 241, 0);
+  }
+}
+
+@keyframes docsGlow {
+  0%,
+  100% {
+    border-color: var(--color-text-dim);
+    box-shadow: 0 0 5px transparent;
+  }
+  50% {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+  }
+}
+
+@keyframes docsScanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes docsTypewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes docsShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes docsFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes docsRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes docsDash {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes docsBlink {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0;
+  }
+}
+
+@keyframes docsScaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes docsSlideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Docs page container animation */
+.section#docs {
+  position: relative;
+  overflow: hidden;
+  animation: docsFadeIn 0.6s ease-out;
+}
+
+.docs-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.docs-particle {
+  position: absolute;
+  background: var(--color-primary);
+  border-radius: 50%;
+  animation: docsParticleFloat 4s ease-in-out infinite;
+  opacity: 0;
+}
+
+.docs-content {
+  position: relative;
+  z-index: 1;
+}
+
+.docs-title-prefix {
+  display: inline-block;
+  margin-right: 12px;
+  animation: docsFloat 2s ease-in-out infinite;
+}
+
+.docs-playground-wrapper {
+  position: relative;
+}
+
+.docs-playground-border {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: linear-gradient(
+    45deg,
+    var(--color-primary),
+    var(--color-accent),
+    var(--color-success),
+    var(--color-primary)
+  );
+  background-size: 400% 400%;
+  z-index: -1;
+  border-radius: 8px;
+  animation: docsShimmer 4s ease infinite;
+}
+
+.section#docs .section-title {
+  position: relative;
+  overflow: hidden;
+}
+
+.section#docs .section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  animation: docsShimmer 2s linear infinite;
+  background-size: 200% 100%;
+}
+
+@keyframes docsTitleUnderline {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.section#docs .section-title::after {
+  animation: docsTitleUnderline 1s ease-out forwards;
+}
+
+/* Playground container animation */
+.playground {
+  animation: docsFadeIn 0.8s ease-out;
+}
+
+/* Sidebar animations */
+.playground-sidebar {
+  animation: docsSlideIn 0.6s ease-out;
+}
+
+.playground-sidebar-title {
+  position: relative;
+}
+
+.playground-sidebar-title::before {
+  content: '>';
+  margin-right: 8px;
+  animation: docsBlink 1s infinite;
+  color: var(--color-accent);
+}
+
+/* Story button animations */
+.playground-story-button {
+  position: relative;
+  overflow: hidden;
+  animation: docsFadeIn 0.4s ease-out;
+}
+
+.playground-story-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.playground-story-button:hover::before {
+  left: 100%;
+  animation: docsShimmer 0.5s linear;
+}
+
+.playground-story-button:hover {
+  animation: docsGlow 2s ease-in-out infinite;
+}
+
+.playground-story-button.active {
+  animation: docsPulse 2s ease-in-out infinite;
+}
+
+.playground-story-button:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.playground-story-button:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.playground-story-button:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.playground-story-button:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.playground-story-button:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.playground-story-button:nth-child(6) {
+  animation-delay: 0.6s;
+}
+
+.playground-story-button:nth-child(7) {
+  animation-delay: 0.7s;
+}
+
+.playground-story-button:nth-child(8) {
+  animation-delay: 0.8s;
+}
+
+.playground-story-button:nth-child(9) {
+  animation-delay: 0.9s;
+}
+
+.playground-story-button:nth-child(10) {
+  animation-delay: 1s;
+}
+
+.playground-story-button:nth-child(11) {
+  animation-delay: 1.1s;
+}
+
+/* Component doc animations */
+.component-doc {
+  animation: docsFadeIn 0.6s ease-out;
+}
+
+.component-doc-header {
+  animation: docsSlideRight 0.5s ease-out;
+}
+
+.component-doc-title {
+  position: relative;
+  display: inline-block;
+}
+
+.component-doc-title::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background: var(--color-accent);
+  border-radius: 2px;
+  animation: docsFloat 3s ease-in-out infinite;
+}
+
+/* Presets animations */
+.component-doc-presets {
+  animation: docsScaleIn 0.4s ease-out;
+}
+
+.component-doc-preset-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.component-doc-preset-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.3s,
+    height 0.3s;
+}
+
+.component-doc-preset-button:active::after {
+  width: 200px;
+  height: 200px;
+}
+
+.component-doc-preset-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Preview area animations */
+.component-doc-preview {
+  animation: docsSlideRight 0.5s ease-out;
+  position: relative;
+}
+
+.component-doc-preview::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 20px;
+  height: 20px;
+  border-top: 3px solid var(--color-accent);
+  border-right: 3px solid var(--color-accent);
+  border-radius: 0 4px 0 0;
+}
+
+.component-doc-preview-area {
+  position: relative;
+  overflow: hidden;
+}
+
+.component-doc-preview-area::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-primary),
+    transparent
+  );
+  animation: docsScanline 3s linear infinite;
+  opacity: 0.5;
+}
+
+.component-doc-preview-area::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-success),
+    transparent
+  );
+  animation: docsScanline 3s linear infinite reverse;
+  opacity: 0.5;
+}
+
+/* Controls animations */
+.component-doc-controls {
+  animation: docsSlideRight 0.6s ease-out;
+  animation-delay: 0.1s;
+  position: relative;
+}
+
+.component-doc-controls::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 20px;
+  height: 20px;
+  border-left: 3px solid var(--color-success);
+  border-top: 3px solid var(--color-success);
+  border-radius: 4px 0 0 0;
+}
+
+.props-control-item {
+  animation: docsFadeIn 0.3s ease-out;
+  position: relative;
+  padding-left: 12px;
+}
+
+.props-control-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.props-control-item:hover::before {
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary);
+  box-shadow: 0 0 10px var(--color-primary);
+}
+
+.props-control-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.props-control-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.props-control-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.props-control-item:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.props-control-item:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+/* Code section animations */
+.component-doc-code {
+  animation: docsSlideIn 0.6s ease-out;
+  animation-delay: 0.2s;
+  position: relative;
+}
+
+.component-doc-code::before {
+  content: '{ }';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-family: var(--font-pixel);
+  font-size: 0.75rem;
+  color: var(--color-text-dim);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.code-preview {
+  position: relative;
+  overflow: hidden;
+}
+
+.code-preview::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.code-preview-copy {
+  position: relative;
+  overflow: hidden;
+}
+
+.code-preview-copy::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.3s,
+    height 0.3s;
+}
+
+.code-preview-copy:active::before {
+  width: 100px;
+  height: 100px;
+}
+
+/* Section titles with animation */
+.component-doc-section-title {
+  position: relative;
+}
+
+.component-doc-section-title::before {
+  content: '▸';
+  margin-right: 8px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.component-doc-section-title:hover::before {
+  transform: translateX(4px);
+}
+
+/* Add smooth scroll to content */
+.playground-content {
+  scroll-behavior: smooth;
+}
+
+.playground-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.playground-content::-webkit-scrollbar-track {
+  background: var(--color-bg);
+  border-radius: 4px;
+}
+
+.playground-content::-webkit-scrollbar-thumb {
+  background: var(--color-text-dim);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.playground-content::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+.playground-stories-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.playground-stories-list::-webkit-scrollbar-track {
+  background: var(--color-bg);
+  border-radius: 3px;
+}
+
+.playground-stories-list::-webkit-scrollbar-thumb {
+  background: var(--color-text-dim);
+  border-radius: 3px;
+  transition: background 0.3s ease;
+}
+
+.playground-stories-list::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+.props-control-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.props-control-list::-webkit-scrollbar-track {
+  background: var(--color-bg);
+  border-radius: 3px;
+}
+
+.props-control-list::-webkit-scrollbar-thumb {
+  background: var(--color-text-dim);
+  border-radius: 3px;
+  transition: background 0.3s ease;
+}
+
+.props-control-list::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
@@ -1244,5 +1921,18 @@ a:hover {
   .playground-stories-list,
   .props-control-list {
     max-height: none;
+  }
+
+  /* Disable some animations on mobile for performance */
+  .playground-story-button::before {
+    display: none;
+  }
+
+  .component-doc-preview-area::before {
+    display: none;
+  }
+
+  .code-preview::before {
+    display: none;
   }
 }
