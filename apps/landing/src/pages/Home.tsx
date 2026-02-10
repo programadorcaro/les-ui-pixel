@@ -38,6 +38,33 @@ const LANDING_LABELS: { label: string; variant: 'pink' | 'cyan' | 'yellow' }[] =
     { label: 'LEGENDARY', variant: 'yellow' },
   ];
 
+// const SHOWCASE_COMPANIES = [
+//   {
+//     name: 'Retro Games Studio',
+//     description: 'Building immersive pixel art games with our components',
+//     logo: '🎮',
+//     variant: 'accent' as const,
+//   },
+//   {
+//     name: 'Pixel Dashboard Co',
+//     description: 'Creating beautiful retro-style admin panels',
+//     logo: '📊',
+//     variant: 'success' as const,
+//   },
+//   {
+//     name: '8-Bit Analytics',
+//     description: 'Data visualization with nostalgic charm',
+//     logo: '📈',
+//     variant: 'primary' as const,
+//   },
+//   {
+//     name: 'Indie Dev Hub',
+//     description: 'Powering indie game developers worldwide',
+//     logo: '🚀',
+//     variant: 'danger' as const,
+//   },
+// ];
+
 const HERO_STARS: {
   top: string;
   left: string;
@@ -85,9 +112,11 @@ export function Home() {
           <div className="landing-hero-card">
             <PixelTitle text="L&S Pixel" className="landing-hero-title" />
             <p className="landing-hero-subtitle">Component Library</p>
+            <p className="landing-hero-description">
+              React components with pixel art aesthetics
+            </p>
             <p className="landing-hero-text">
-              React components with pixel art aesthetics for dashboards, games
-              and retro interfaces.
+              Built for dashboards, games and retro interfaces
             </p>
             <Link to="/docs" className="landing-hero-cta">
               <Button variant="primary" size="lg" style8bit>
@@ -138,7 +167,7 @@ export function Home() {
       <div className="landing-grid">
         <div className="landing-card landing-card--pastel-green">
           <h2 className="landing-card-title">Welcome</h2>
-          <p className="landing-card-text landing-card-text--welcome">
+          <p className="landing-card-text landing-card-text">
             Welcome to our pixel paradise! A collection of React components
             where classic pixel art meets modern UI. Perfect for games,
             dashboards and retro-style apps.
@@ -191,6 +220,38 @@ export function Home() {
           ))}
         </div>
       </div>
+
+      {/* <section
+        className="landing-section landing-section--showcase"
+        id="showcase"
+      >
+        <h2 className="landing-section-title">Trusted by developers</h2>
+        <p className="landing-section-desc">
+          Companies and teams building amazing pixel art experiences
+        </p>
+        <div className="landing-showcase">
+          <Carousel
+            ariaLabel="Showcase companies"
+            className="landing-showcase-carousel"
+          >
+            {SHOWCASE_COMPANIES.map((company) => (
+              <Card
+                key={company.name}
+                variant={company.variant}
+                className="landing-showcase-card"
+              >
+                <CardHeader>
+                  <div className="landing-showcase-logo">{company.logo}</div>
+                  <CardTitle>{company.name}</CardTitle>
+                </CardHeader>
+                <CardBody>
+                  <p className="landing-showcase-text">{company.description}</p>
+                </CardBody>
+              </Card>
+            ))}
+          </Carousel>
+        </div>
+      </section> */}
 
       <section className="landing-section" id="examples">
         <h2 className="landing-section-title">Component examples</h2>

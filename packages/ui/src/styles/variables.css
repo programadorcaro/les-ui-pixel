@@ -2,8 +2,9 @@
    L&S PIXEL
    ======================================== */
 
-/* Custom Pixel Font */
+/* Custom Pixel Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&display=swap');
 
 /* ========================================
    ROOT VARIABLES
@@ -39,6 +40,7 @@
 
   /* Font */
   --font-pixel: 'Press Start 2P', monospace;
+  --font-pixelify: 'Pixelify Sans', sans-serif;
   --font-size-xs: 8px;
   --font-size-sm: 10px;
   --font-size-md: 12px;
