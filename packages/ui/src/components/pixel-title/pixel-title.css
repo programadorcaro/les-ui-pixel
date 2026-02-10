@@ -3,7 +3,7 @@
    ======================================== */
 .pixel-title {
   font-family: var(--font-pixel);
-  font-size: var(--font-size-xxl);
+  font-size: var(--font-size-xl);
   color: var(--color-accent);
   margin-bottom: var(--space-md);
   text-shadow:
