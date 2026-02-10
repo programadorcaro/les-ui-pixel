@@ -102,8 +102,7 @@ const HERO_STARS: {
 
 export function Home() {
   const { contributors, loading, error } = useGitHubContributors();
-  const isDesktop = useMediaQuery('(min-width: 764px)');
-  const useCarousel = contributors.length > (isDesktop ? 3 : 2);
+  const isDesktop = useMediaQuery('(min-width: 769px)');
 
   return (
     <main className="landing">
@@ -316,19 +315,21 @@ export function Home() {
           {!loading &&
             !error &&
             contributors.length > 0 &&
-            (useCarousel ? (
+            (isDesktop ? (
+              <div className="landing-contributors-grid">
+                {contributors.map((person) => (
+                  <ContributorCard key={person.login} person={person} />
+                ))}
+              </div>
+            ) : (
               <Carousel
-                ariaLabel="Contributors "
+                ariaLabel="Contributors"
                 className="landing-contributors-carousel"
               >
                 {contributors.map((person) => (
                   <ContributorCard key={person.login} person={person} />
                 ))}
               </Carousel>
-            ) : (
-              contributors.map((person) => (
-                <ContributorCard key={person.login} person={person} />
-              ))
             ))}
         </div>
       </section>
