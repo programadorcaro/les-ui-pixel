@@ -2,27 +2,28 @@
    INPUT FIELDS
    ======================================== */
 .input-pixel {
-  font-family: var(--font-pixel);
-  font-size: var(--font-size-sm);
-  padding: var(--space-md);
+  font-size: 0.6875rem;
+  padding: 10px 12px;
   background: var(--color-bg-secondary);
   border: var(--border-pixel) solid var(--color-text-dim);
   color: var(--color-text);
   outline: none;
   transition: all 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
   clip-path: polygon(
-    0 6px,
-    6px 6px,
-    6px 0,
-    calc(100% - 6px) 0,
-    calc(100% - 6px) 6px,
-    100% 6px,
-    100% calc(100% - 6px),
-    calc(100% - 6px) calc(100% - 6px),
-    calc(100% - 6px) 100%,
-    6px 100%,
-    6px calc(100% - 6px),
-    0 calc(100% - 6px)
+    0 4px,
+    4px 4px,
+    4px 0,
+    calc(100% - 4px) 0,
+    calc(100% - 4px) 4px,
+    100% 4px,
+    100% calc(100% - 4px),
+    calc(100% - 4px) calc(100% - 4px),
+    calc(100% - 4px) 100%,
+    4px 100%,
+    4px calc(100% - 4px),
+    0 calc(100% - 4px)
   );
 }
 
