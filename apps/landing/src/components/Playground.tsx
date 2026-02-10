@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { ComponentDoc, StoryConfig } from './ComponentDoc';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 
 export interface PlaygroundProps {
   stories: StoryConfig<any>[];
@@ -11,6 +12,9 @@ export function Playground({
   const [selectedStoryId, setSelectedStoryId] = useState<string>(
     stories[0]?.id || ''
   );
+  const contentRef = useRef<HTMLDivElement>(null);
+  const isMobile = useMediaQuery('(max-width: 768px)');
+  const isFirstMount = useRef(true);
 
   const sortedStories = [...stories].sort((a, b) =>
     a.title.localeCompare(b.title)
@@ -19,6 +23,16 @@ export function Playground({
   const selectedStory = sortedStories.find((s) => s.id === selectedStoryId);
 
   const StoryComponent = selectedStory;
+
+  useEffect(() => {
+    if (isFirstMount.current) {
+      isFirstMount.current = false;
+      return;
+    }
+    if (isMobile && contentRef.current) {
+      contentRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [selectedStoryId, isMobile]);
 
   return (
     <div className="playground">
@@ -41,7 +55,7 @@ export function Playground({
         </div>
       </div>
 
-      <div className="playground-content">
+      <div ref={contentRef} className="playground-content">
         {StoryComponent && <ComponentDoc story={StoryComponent} />}
       </div>
     </div>
