@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://programadorcaro.github.io/les-ui-pixel/sitemap.xml
+Sitemap: https://pixel.lescode.tech/sitemap.xml
